@@ -128,7 +128,7 @@ bindsym $mod+a focus parent
 set $ws1 "1"
 set $ws2 "2 "
 set $ws3 "3 "
-set $ws4 "4 " 
+set $ws4 "4" 
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -164,7 +164,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 assign [class="Pcmanfm"] $ws2
 assign [class="okular"] $ws3
 assign [class="firefox"] $ws4
-assign [class="thunderbird"] $ws1
 assign [class="TelegramDesktop"] $ws8
 
 
@@ -228,7 +227,24 @@ exec --no-startup-id /usr/lib/xfce-polkit/xfce-polkit
 exec --no-startup-id okular
 ### Autostart
 exec_always autotiling -w 1 3 5 7 9
+exec_always feh --bg-fill --randomize ~/./Pictures/anime/*
 # for_window [title="Picture-in-Picture"] sticky enable
 # bindsym $mod+Shift+S sticky enable
 # Suspend
 bindsym $mod+Shift+period exec systemctl suspend
+
+
+
+
+## Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date).jpeg"
+# bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+# bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date).jpeg"
+bindsym $mod+Shift+d exec --no-startup-id maim --select "/home/$USER/Pictures/$(date).jpeg"
+
+## Clipboard Screenshots
+# bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+# bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym $mod+d exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+# bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
